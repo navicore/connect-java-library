@@ -1,8 +1,15 @@
 package com.urbanairship.connect.client;
 
-public final class Constants {
+final class Constants {
 
-    public static final String API_URL = "https://connect.urbanairship.com/api/events/";
-
+    private static String UA_URL = System.getenv("UA_URL");
+    static {
+        if (UA_URL == null)  {
+            UA_URL = "https://connect.urbanairship.com/api/events/";
+            System.out.println("using URL " + UA_URL);
+        }
+    }
+    static final String API_URL = UA_URL;
     private Constants() { }
+
 }
